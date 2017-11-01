@@ -1,0 +1,22 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "Chat Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sterrio/Socket.IO-Server.git"
+  },
+  "author": "Mackenzie Boudreau",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sterrio/Socket.IO-Server/issues"
+  },
+  "homepage": "https://github.com/sterrio/Socket.IO-Server#readme",
+  "dependencies": {
+    "socket.io": "^2.0.4"
+  }
+}
