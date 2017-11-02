@@ -7,7 +7,7 @@ console.log('running!')
 io.on('connection', function (socket) {
   // store username in socket obj
   socket.username = socket.handshake.query['user']
-  socket.emit('joined', { user: socket.username });
+  io.emit('joined', { user: socket.username });
   socket.on('message', function (data) {
     socket.broadcast.emit('message_update', {user: socket.username, msg: data})
   });
