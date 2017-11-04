@@ -12,7 +12,9 @@ io.on('connection', function (socket) {
   socket.on('disconnect', function() {
     socket.broadcast.emit('server_message', socket.username + " left the chat.");
   })
-
+  socket.on('change_username', function(data) {
+     socket.username = data
+  }
   socket.on('message', function (data) {
 	usernames = "sfsdf" 
     if (data.includes("!users")) {
