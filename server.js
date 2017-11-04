@@ -14,6 +14,14 @@ io.on('connection', function (socket) {
   })
 
   socket.on('message', function (data) {
-    socket.broadcast.emit('message_update', {user: socket.username, msg: data})
+    if (data.includes("!users")) {
+      users = Object.keys(io.sockets.sockets);
+
+      socket.broadcast.emit('server_message', users.length + " amount of users.");
+    } else if (data.includes("!mute")) {
+
+    } else {
+      socket.broadcast.emit('message_update', {user: socket.username, msg: data})
+    }
   });
 });
