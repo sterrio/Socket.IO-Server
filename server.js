@@ -7,9 +7,13 @@ console.log('this is a test')
 io.on('connection', function (socket) {
   // store username in socket obj
   socket.username = socket.handshake.query['user']
-  io.emit('joined', { user: socket.username });
+  io.emit('server_message', socket.username + " joined the chat.");
+
+  socket.on('disconnect', function() {
+    socket.broadcast.emit('server_message', socket.username + " left the chat.");
+  })
+
   socket.on('message', function (data) {
-    socket.emit('test', 'test2')
     socket.broadcast.emit('message_update', {user: socket.username, msg: data})
   });
 });
