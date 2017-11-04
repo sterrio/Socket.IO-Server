@@ -14,12 +14,19 @@ io.on('connection', function (socket) {
   })
 
   socket.on('message', function (data) {
+	usernames = "sfsdf" 
     if (data.includes("!users")) {
-      users = Object.keys(io.sockets.sockets);
-
-      socket.broadcast.emit('server_message', users.length + " amount of users.");
+	var sockets = io.sockets.sockets;
+	usernames = ""
+	for(var socketId in sockets) {	
+  		var socket = sockets[socketId]; //loop through and do whatever with each conne
+		usernames += socket.username + " " 
+	}
+	usernames += "are all the users online"
+	console.log(usernames)
+	socket.emit('server_message', usernames);
     } else if (data.includes("!mute")) {
-
+	console.log('hey')
     } else {
       socket.broadcast.emit('message_update', {user: socket.username, msg: data})
     }
